@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/room-area-calculator/static/css/main.bd792a43.css",
-    "main.js": "/room-area-calculator/static/js/main.69695132.js",
+    "main.css": "/room-area-calculator/static/css/main.de54cb55.css",
+    "main.js": "/room-area-calculator/static/js/main.7796b905.js",
     "index.html": "/room-area-calculator/index.html",
-    "main.bd792a43.css.map": "/room-area-calculator/static/css/main.bd792a43.css.map",
-    "main.69695132.js.map": "/room-area-calculator/static/js/main.69695132.js.map"
+    "main.de54cb55.css.map": "/room-area-calculator/static/css/main.de54cb55.css.map",
+    "main.7796b905.js.map": "/room-area-calculator/static/js/main.7796b905.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd792a43.css",
-    "static/js/main.69695132.js"
+    "static/css/main.de54cb55.css",
+    "static/js/main.7796b905.js"
   ]
 }
