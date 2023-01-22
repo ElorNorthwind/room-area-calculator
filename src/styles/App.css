@@ -14,7 +14,7 @@ body {
   box-sizing: border-box;
 }
 
-.App {
+.Wrapper {
   margin: 20px auto;
   background-color: rgb(245, 245, 242);
   padding: 10px;
@@ -36,10 +36,14 @@ input {
   border-radius: 2px;
 }
 
+.AppLabel {
+  margin: 1rem 0;
+}
+
 .explication {
   /* border: 1px solid rgb(213, 213, 213); */
   width: 100%;
-  margin: 1rem 0;
+  margin: 0;
 
   /* padding: 2px; */
 }

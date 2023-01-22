@@ -7,14 +7,16 @@ export default function Table() {
   const rooms = useSelector((state) => state.rooms.rooms);
 
   return rooms.length > 0 ? (
-    <table className="explication">
-      <TableHeader />
-      <tbody>
-        {rooms.map((item) => (
-          <TableRow key={item.label} room={item} />
-        ))}
-      </tbody>
-    </table>
+    <div className="Wrapper">
+      <table className="explication">
+        <TableHeader />
+        <tbody>
+          {rooms.map((item) => (
+            <TableRow key={item.label} room={item} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   ) : (
     <></>
   );
