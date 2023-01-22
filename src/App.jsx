@@ -1,47 +1,19 @@
-import Excel from "exceljs";
-import { useRef, useState } from "react";
-import { prepareData } from "./utils/calculateData";
-import { parseRow } from "./utils/parseWorksheet";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { readAndParseXmls } from "./services";
+import { addRoomsAction, setRoomsStatusAction } from "./store/roomsReducer";
 
 function App() {
-  const [rooms, setRooms] = useState([]);
-  const [status, setStatus] = useState("Выберете файл экспликации");
+  const dispatch = useDispatch();
+  const rooms = useSelector((state) => state.rooms.rooms);
+  const status = useSelector((state) => state.rooms.status);
   const fileInputRef = useRef();
 
-  function sortRooms(a, b) {
-    if (a.num === b.num) {
-      return a.letter < b.letter ? -1 : 1;
-    } else {
-      return a.num < b.num ? -1 : 1;
-    }
-  }
-
   async function parseXmls() {
-    const file = fileInputRef.current.files[0];
-    const reader = new FileReader();
-    const wb = new Excel.Workbook();
-    reader.readAsArrayBuffer(file);
-    reader.onload = () => {
-      const buffer = reader.result;
-      wb.xlsx
-        .load(buffer)
-        .then((workbook) => {
-          const ws = workbook.getWorksheet(1);
-          const floorNumber = ws.getRow(12).getCell(1).value;
-          const adress = ws.getRow(4).getCell(3).value;
-          const arr = [];
-          ws.eachRow(function (row) {
-            const r = row.values;
-            if (r[1] === floorNumber) {
-              arr.push(parseRow(r));
-            }
-          });
-          console.log(arr);
-          setRooms(prepareData(arr.sort(sortRooms)));
-          setStatus(adress);
-        })
-        .catch(setStatus("Некорректный файл"));
-    };
+    const results = await readAndParseXmls(fileInputRef.current.files[0]);
+
+    dispatch(addRoomsAction(results.rooms));
+    dispatch(setRoomsStatusAction(results.adress));
   }
 
   return (
@@ -73,18 +45,22 @@ function App() {
               <tr key={item.label} className={item.rowStyle}>
                 <td>{item.label}</td>
                 <td>{item.desc}</td>
-                <td>{item.main}</td>
-                <td>{item.secondary}</td>
-                <td>{item.summer}</td>
-                <td>{item.block}</td>
+                <td>{item.formated.sMain}</td>
+                <td>{item.formated.sSecondary}</td>
+                <td>{item.formated.sSummer}</td>
+                <td>{item.blockNum}</td>
 
                 {item.rowSpawn > 0 && (
                   <>
                     <td rowSpan={Number(item.rowSpawn)}>
-                      {Math.round(item.areaLiving * 10) / 10}
+                      {item.formated.sBlockMainSum}
                     </td>
-                    <td rowSpan={Number(item.rowSpawn)}>0</td>
-                    <td rowSpan={Number(item.rowSpawn)}>0</td>
+                    <td rowSpan={Number(item.rowSpawn)}>
+                      {item.formated.sBlockObsh}
+                    </td>
+                    <td rowSpan={Number(item.rowSpawn)}>
+                      {item.formated.sBlockZhP}
+                    </td>
                   </>
                 )}
               </tr>
