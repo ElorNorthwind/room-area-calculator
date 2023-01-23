@@ -12,7 +12,16 @@ export default function FileSelector() {
     const results = await readAndParseXmls(fileInputRef.current.files[0]);
 
     dispatch(addRoomsAction(results.rooms));
-    dispatch(setRoomsStatusAction(results.adress));
+    dispatch(
+      setRoomsStatusAction(
+        results.adress +
+          ", квартира " +
+          results.appNumber +
+          " (" +
+          results.floorNumber +
+          " этаж)"
+      )
+    );
   }
 
   return (
