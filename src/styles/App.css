@@ -57,7 +57,6 @@ input {
   align-items: center;
   left: 0;
   right: 0;
-
   margin: 5px 0;
   text-align: center;
 }
@@ -117,4 +116,10 @@ input {
   background-color: rgb(243, 243, 243);
   border: 1px solid rgb(231, 231, 231);
   color: rgb(117, 136, 117);
+}
+
+.block_item.block_item__header {
+  position: sticky;
+  top: 0;
+  border: 1px solid red;
 }

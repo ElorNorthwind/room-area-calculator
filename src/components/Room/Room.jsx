@@ -5,6 +5,24 @@ import { editRoomAction } from "../../store/roomsReducer";
 export default function Room({ room }) {
   const dispatch = useDispatch();
 
+  // const rooms = useSelector((state) => state.rooms.rooms);
+
+  // //Check for blocks with no main area
+  // function checkBlocks() {
+  //   roomsToBlocks(rooms).forEach(function (block) {
+  //     if (!block.sBlockMainSum) {
+  //       block.rooms.forEach((room) =>
+  //         dispatch(
+  //           editRoomAction({
+  //             label: room.label,
+  //             blockNum: null,
+  //           })
+  //         )
+  //       );
+  //     }
+  //   });
+  // }
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "ROOM",
     item: {
@@ -17,40 +35,19 @@ export default function Room({ room }) {
     }),
     end: (room, monitor) => {
       const dropResult = monitor.getDropResult();
-      console.log(room.label, dropResult.blockNum);
+      const fallbackBlock = room.type === "main" ? room.num : null;
       if (room.label && dropResult) {
-        let resultNum = dropResult.blockNum;
-        if (room.type === "main" && dropResult.type === "secondary") {
-          resultNum = room.num;
-        } else if (
-          room.type === "secondary" &&
-          dropResult.type === "secondary"
-        ) {
-          resultNum = null;
-        }
-
         dispatch(
           editRoomAction({
             label: room.label,
-            blockNum: resultNum,
+            blockNum:
+              dropResult.type === "main" ? dropResult.blockNum : fallbackBlock,
           })
         );
+        // checkBlocks();
       }
     },
   }));
-
-  // item: { room },
-  // end: (item, monitor) => {
-  //   const dropResult = monitor.getDropResult();
-  //   if (item.room.label && dropResult) {
-  //     dispatch(
-  //       editRoomAction({
-  //         label: item.room.label,
-  //         blockNum: dropResult.blockNum,
-  //       })
-  //     );
-  //   }
-  // },
 
   return (
     <div

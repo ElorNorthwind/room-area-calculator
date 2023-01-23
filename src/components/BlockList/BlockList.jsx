@@ -11,6 +11,18 @@ export default function BlockList() {
     <div className="Wrapper">
       <DndProvider backend={HTML5Backend}>
         <div className="block_list">
+          <div className="block_item block_item__header">
+            <div className="room room__header">
+              <div>№</div>
+              <div>описание</div>
+              <div>жил.</div>
+              <div>вспом.</div>
+              <div>летн.</div>
+            </div>
+            <div className="s_main_sum">S жил.</div>
+            <div className="s_block_obsh">S общ.</div>
+            <div className="s_block_zhp">S ж.п.</div>
+          </div>
           {blocks.map((block) => (
             <Block block={block} key={block.blockNum} />
           ))}
