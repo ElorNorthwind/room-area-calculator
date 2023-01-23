@@ -1,7 +1,19 @@
 import React from "react";
+import { useDrop } from "react-dnd";
 import RoomList from "../RoomList/RoomList";
 
 export default function Block({ block }) {
+  // const [{ isOver }, drop] = useDrop(
+  //   () => ({
+  //     accept: ItemTypes.KNIGHT,
+  //     drop: () => moveKnight(x, y),
+  //     collect: (monitor) => ({
+  //       isOver: !!monitor.isOver(),
+  //     }),
+  //   }),
+  //   [x, y]
+  // );
+
   return (
     <div className={`block_item block__${block.type}`}>
       <RoomList rooms={block.rooms}></RoomList>
