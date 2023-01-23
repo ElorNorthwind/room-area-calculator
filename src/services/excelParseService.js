@@ -1,16 +1,10 @@
+import { initialSortRooms } from "./roomsCalculateService";
+
 export function parseWorksheet(ws) {
   const adress = ws.getRow(4).getCell(3).value;
   const appNumber = ws.getRow(7).getCell(1).value;
   const floorNumber = ws.getRow(12).getCell(1).value;
   const arr = [];
-
-  const initialSortRooms = (a, b) => {
-    if (a.num === b.num) {
-      return a.letter < b.letter ? -1 : 1;
-    } else {
-      return a.num < b.num ? -1 : 1;
-    }
-  };
 
   ws.eachRow(function (row) {
     const r = row.values;
@@ -20,7 +14,7 @@ export function parseWorksheet(ws) {
   });
 
   return {
-    rooms: initialSetBlockNums(arr.sort(initialSortRooms)),
+    rooms: initialSetBlockNums(arr.sort(initialSortRooms)), //Убрать если перейду на чанки
     adress: /.*?, .*?, .*?, (.*)/i.exec(adress)[1],
     floorNumber,
     appNumber: /№: (.*)$/i.exec(appNumber)[1],

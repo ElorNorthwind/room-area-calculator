@@ -1,3 +1,4 @@
+import BlockList from "./components/BlockList/BlockList";
 import FileSelector from "./components/FileSelector/FileSelector";
 import Table from "./components/Table/Table";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <FileSelector />
       <Table />
+      <BlockList />
     </>
   );
 }
