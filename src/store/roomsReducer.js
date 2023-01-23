@@ -20,7 +20,7 @@ export const roomsReducer = (state = defaultState, action) => {
               ? {
                   ...room,
                   label: action.payload.label,
-                  block: action.payload.block,
+                  blockNum: action.payload.blockNum,
                 }
               : room
           ),

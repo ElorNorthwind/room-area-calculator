@@ -46,47 +46,13 @@ input {
   margin: 1rem 0;
 }
 
-.explication {
-  /* border: 1px solid rgb(213, 213, 213); */
-  width: 100%;
-  margin: 0;
-
-  /* padding: 2px; */
-}
-
-.explication thead {
-  position: sticky;
-  top: 0;
-}
-
-.explication td {
-  border: 1px solid rgb(213, 213, 213);
-  text-align: center;
-}
-
-.explication th {
-  border: 1px solid rgb(76, 90, 107);
-  background-color: rgb(76, 90, 107);
-  color: white;
-  padding: 5px 0;
-  font-weight: normal;
-}
-
-.common {
-  background-color: rgb(242, 243, 237);
-}
-.block__first,
-.block {
-  background-color: rgb(255, 255, 255);
-}
-
 .block_list {
   width: 100%;
 }
 
 .block_item {
   display: grid;
-  grid-template-columns: 500px repeat(4, 1fr);
+  grid-template-columns: 500px repeat(3, 1fr);
   position: relative;
   align-items: center;
   left: 0;
@@ -100,6 +66,11 @@ input {
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(191, 202, 191);
   /* margin: 8px -1px; */
+}
+
+.block__main.over {
+  background-color: rgb(255, 254, 245);
+  border: 1px solid rgb(86, 149, 86);
 }
 
 .block__secondary {
