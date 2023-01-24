@@ -37,6 +37,7 @@ export function roomsToBlocks(rooms) {
         });
   });
   blocks = saturateBlocks(rooms, blocks);
+  console.log(blocks);
   return blocks;
 }
 
@@ -67,6 +68,15 @@ function saturateBlocks(rooms, blocks) {
 
     return {
       ...item,
+      rooms: item.rooms.map((room) => ({
+        ...room,
+        sObsh: !!room.sMain
+          ? sFormat((room.sMain / sBlockMainSum) * sBlockObsh)
+          : null,
+        sZhP: !!room.sMain
+          ? sFormat((room.sMain / sBlockMainSum) * sBlockZhP)
+          : null,
+      })),
       sBlockMainSum: sFormat(sBlockMainSum),
       sBlockObsh: sFormat(sBlockObsh),
       sBlockZhP: sFormat(sBlockZhP),

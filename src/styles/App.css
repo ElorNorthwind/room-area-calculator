@@ -26,7 +26,7 @@ html {
   padding: 10px;
   display: flex;
   width: 95%;
-  max-width: 800px;
+  max-width: 900px;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
@@ -52,7 +52,7 @@ input {
 
 .block_item {
   display: grid;
-  grid-template-columns: 500px repeat(3, 1fr);
+  grid-template-columns: 650px repeat(3, 1fr);
   position: relative;
   align-items: center;
   left: 0;
@@ -79,14 +79,14 @@ input {
 
 .rooms_list {
   width: 50%;
-  min-width: 500px;
+  min-width: 650px;
   overflow: hidden;
 }
 
 .room {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 250px 1fr 1fr 1fr;
+  grid-template-columns: 1fr 250px 1fr 1fr 1fr 1fr 1fr;
   position: relative;
   padding: 2px 0;
   border: 1px solid rgb(204, 221, 204);

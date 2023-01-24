@@ -60,6 +60,8 @@ export default function Room({ room }) {
       <div>{room.sMain || "-"}</div>
       <div>{room.sSecondary || "-"}</div>
       <div>{room.sSummer || "-"}</div>
+      <div>{room.sObsh || "-"}</div>
+      <div>{room.sZhP || "-"}</div>
     </div>
   );
 }

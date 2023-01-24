@@ -18,6 +18,8 @@ export default function BlockList() {
               <div>жил.</div>
               <div>вспом.</div>
               <div>летн.</div>
+              <div>общ.</div>
+              <div>ж.п.</div>
             </div>
             <div className="s_main_sum">S жил.</div>
             <div className="s_block_obsh">S общ.</div>
