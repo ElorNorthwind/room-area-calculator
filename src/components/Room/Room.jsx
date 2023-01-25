@@ -5,24 +5,6 @@ import { editRoomAction } from "../../store/roomsReducer";
 export default function Room({ room }) {
   const dispatch = useDispatch();
 
-  // const rooms = useSelector((state) => state.rooms.rooms);
-
-  // //Check for blocks with no main area
-  // function checkBlocks() {
-  //   roomsToBlocks(rooms).forEach(function (block) {
-  //     if (!block.sBlockMainSum) {
-  //       block.rooms.forEach((room) =>
-  //         dispatch(
-  //           editRoomAction({
-  //             label: room.label,
-  //             blockNum: null,
-  //           })
-  //         )
-  //       );
-  //     }
-  //   });
-  // }
-
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "ROOM",
     item: {

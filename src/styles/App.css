@@ -17,6 +17,18 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  /* outline: 1px solid red; */
+}
+
+.background {
+  position: absolute;
+  /* outline: 1px solid red; */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.background.over {
+  /* background-color: rgb(245, 245, 242); */
 }
 
 .Wrapper {
@@ -57,24 +69,33 @@ input {
   align-items: center;
   left: 0;
   right: 0;
-  margin: 5px 0;
+  margin: 8px 0;
   text-align: center;
+  /* border-radius: 5px; */
+  /* overflow: hidden; */
 }
 
 .block__main {
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(191, 202, 191);
+  outline: 1px solid rgb(191, 202, 191);
+  /* border-radius: 0 10px 10px 0; */
   /* margin: 8px -1px; */
 }
 
-.block__main.over {
-  background-color: rgb(255, 254, 245);
-  border: 1px solid rgb(86, 149, 86);
+.block__secondary {
+  /* background-color: rgb(243, 243, 243);
+  outline: 1px solid rgb(213, 213, 213);
+  width: 650px; */
 }
 
-.block__secondary {
-  background-color: rgb(243, 243, 243);
-  border: 1px solid rgb(213, 213, 213);
+.block__main.over {
+  background-color: rgb(248, 255, 245);
+  outline: 1px solid rgb(86, 149, 86);
+}
+
+.block__secondary.over {
+  background-color: rgb(242, 241, 235);
+  outline: 1px solid rgb(190, 190, 190);
 }
 
 .rooms_list {
@@ -83,14 +104,27 @@ input {
   overflow: hidden;
 }
 
+.block__main .rooms_list {
+  outline: 1px solid rgb(191, 202, 191);
+}
+
+.block__secondary .rooms_list {
+  outline: 1px solid rgb(213, 213, 213);
+}
+
+svg {
+  height: 12px;
+}
+
 .room {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 250px 1fr 1fr 1fr 1fr 1fr;
+  align-items: stretch;
   position: relative;
   padding: 2px 0;
-  border: 1px solid rgb(204, 221, 204);
-  margin: -1px 0;
+  outline: 1px solid rgb(204, 221, 204);
+  /* margin: -1px; */
 }
 
 .room__secondary {
@@ -114,7 +148,7 @@ input {
 
 .block__secondary .room {
   background-color: rgb(243, 243, 243);
-  border: 1px solid rgb(231, 231, 231);
+  outline: 1px solid rgb(231, 231, 231);
   color: rgb(117, 136, 117);
 }
 
@@ -122,7 +156,7 @@ input {
   z-index: 1000;
   position: sticky;
   top: 0;
-  /* border: 1px solid red; */
+  outline: 1px solid rgb(49, 49, 49);
   overflow: hidden;
   background-color: rgb(49, 49, 49);
   color: white;
@@ -130,5 +164,5 @@ input {
 }
 
 .block_item.block_item__header * {
-  border: 0;
+  outline: 0;
 }
