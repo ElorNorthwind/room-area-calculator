@@ -87,7 +87,7 @@ function saturateBlocks(rooms, blocks) {
 }
 
 function sFormat(s) {
-  return s === 0 ? null : Math.round((s * 10) * 0.1).toFixed(1);
+  return s === 0 ? null : (Math.round(s * 10) * 0.1).toFixed(1);
 }
 
 export function initialSortRooms(a, b) {
