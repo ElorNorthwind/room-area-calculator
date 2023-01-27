@@ -37,7 +37,7 @@ export function roomsToBlocks(rooms) {
         });
   });
   blocks = saturateBlocks(rooms, blocks);
-  console.log(blocks);
+  // console.log(blocks);
   return blocks;
 }
 
