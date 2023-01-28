@@ -46,12 +46,25 @@ html {
   box-shadow: 0px 0px 7px -2px rgba(0, 0, 0, 0.37);
 }
 
-input {
+.controls {
+  display: flex;
+  align-items: stretch;
+  /* justify-content: space-around; */
   width: 100%;
+}
+
+.file_selector {
+  /* width: auto; */
+  flex-basis: 80%;
   background-color: rgb(255, 255, 255);
   padding: 0.2rem;
   border: 1px solid rgb(213, 213, 213);
   border-radius: 2px;
+}
+
+.export_button {
+  flex-basis: 20%;
+  margin-left: 1rem;
 }
 
 .AppLabel {
