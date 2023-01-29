@@ -38,9 +38,10 @@ export default function FileSelector() {
         />
         <input
           className="export_button"
+          disabled={!(rooms?.length > 0)}
           type="button"
           onClick={() => createExcelReport(rooms)}
-          value="в эксель"
+          value="Выгрузить в эксель"
         />
       </div>
       <div className="AppLabel">
