@@ -64,7 +64,7 @@ html {
 
 .export_button {
   flex-basis: 20%;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .AppLabel {
@@ -150,15 +150,6 @@ svg {
   font-weight: 500;
 }
 
-/* .room > div {
-  border: 1px solid rgb(204, 221, 204);
-} */
-
-/* .room__main > div:first-of-type {
-  background-color: rgb(227, 247, 227);
-  margin: 2px 4px;
-} */
-
 .block__secondary .room {
   background-color: rgb(243, 243, 243);
   outline: 1px solid rgb(231, 231, 231);
@@ -166,7 +157,7 @@ svg {
 }
 
 .block_item.block_item__header {
-  z-index: 1000;
+  z-index: 10;
   position: sticky;
   top: 0;
   outline: 1px solid rgb(49, 49, 49);
@@ -178,4 +169,14 @@ svg {
 
 .block_item.block_item__header * {
   outline: 0;
+}
+
+.clickable_number {
+  cursor: help;
+  border-radius: 3px;
+  margin: 0 5px;
+}
+
+.clickable_number:hover {
+  background-color: rgb(248, 251, 248);
 }

@@ -4,10 +4,12 @@ import thunk from "redux-thunk";
 
 import { roomsReducer } from "./roomsReducer";
 import { tableReducer } from "./tableReducer";
+import { uiReducer } from "./uiReducer";
 
 const rootReducer = combineReducers({
   rooms: roomsReducer,
   table: tableReducer,
+  ui: uiReducer,
 });
 
 export const store = createStore(

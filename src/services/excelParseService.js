@@ -14,7 +14,7 @@ export function parseWorksheet(ws) {
   });
 
   return {
-    rooms: initialSetBlockNums(arr.sort(initialSortRooms)), //Убрать если перейду на чанки
+    rooms: initialSetBlockNums(arr.sort(initialSortRooms)),
     adress: /.*?, .*?, .*?, (.*)/i.exec(adress)[1],
     floorNumber,
     appNumber: /№: (.*)$/i.exec(appNumber)[1],

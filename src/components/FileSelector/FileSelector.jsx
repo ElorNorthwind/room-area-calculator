@@ -28,7 +28,7 @@ export default function FileSelector() {
 
   return (
     <div className="Wrapper">
-      <div class="controls">
+      <div className="controls">
         <input
           className="file_selector"
           type="file"
