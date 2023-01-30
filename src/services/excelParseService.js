@@ -1,10 +1,32 @@
+import { setRoomsStatusAction } from "../store/roomsReducer";
 import { initialSortRooms } from "./roomsCalculateService";
 
-export function parseWorksheet(ws) {
+export function parseWorksheet(ws, dispatch) {
   const adress = ws.getRow(4).getCell(3).value;
-  const appNumber = ws.getRow(7).getCell(1).value;
-  const floorNumber = ws.getRow(12).getCell(1).value;
+  const appNumber =
+    (/^Квартира №:/.test(ws.getRow(6).getCell(1).value) &&
+      ws.getRow(6).getCell(1).value) ||
+    (/^Квартира №:/.test(ws.getRow(7).getCell(1).value) &&
+      ws.getRow(7).getCell(1).value);
+  const floorNumber =
+    (/^\d+$/.test(ws.getRow(11).getCell(1).value) &&
+      ws.getRow(11).getCell(1).value) ||
+    (/^\d+$/.test(ws.getRow(12).getCell(1).value) &&
+      ws.getRow(12).getCell(1).value);
   const arr = [];
+
+  if (!appNumber || !floorNumber) {
+    console.log(appNumber);
+    console.log(floorNumber);
+    dispatch(setRoomsStatusAction("error"));
+    return {
+      rooms: [],
+      status: "error",
+      adress: null,
+      floorNumber: null,
+      appNumber: null,
+    };
+  }
 
   ws.eachRow(function (row) {
     const r = row.values;
@@ -13,11 +35,12 @@ export function parseWorksheet(ws) {
     }
   });
 
+  dispatch(setRoomsStatusAction("succsess"));
   return {
     rooms: initialSetBlockNums(arr.sort(initialSortRooms)),
-    adress: /.*?, .*?, .*?, (.*)/i.exec(adress)[1],
+    adress: /(?:Москва.*?, )(?:.*?округ.*?, )?(.*)$/i.exec(adress)?.[1],
     floorNumber,
-    appNumber: /№: (.*)$/i.exec(appNumber)[1],
+    appNumber: /№: (.*)$/i.exec(appNumber)?.[1],
   };
 }
 

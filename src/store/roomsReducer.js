@@ -1,6 +1,9 @@
 const defaultState = {
   rooms: [],
-  status: "Файл не выбран",
+  status: "empty",
+  adress: null,
+  floorNumber: null,
+  appNumber: null,
 };
 
 export const ADD_ROOMS = "ADD_ROOMS";
@@ -10,7 +13,13 @@ export const SET_ROOMS_STATUS = "SET_ROOMS_STATUS";
 export const roomsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_ROOMS:
-      return { ...state, rooms: [...action.payload] };
+      return {
+        ...state,
+        rooms: [...action.payload.rooms],
+        adress: action.payload.adress,
+        floorNumber: action.payload.floorNumber,
+        appNumber: action.payload.appNumber,
+      };
     case EDIT_ROOM:
       return {
         ...state,

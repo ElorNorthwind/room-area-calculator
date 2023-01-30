@@ -1,8 +1,9 @@
 import Excel from "exceljs";
 import FileSaver from "file-saver";
+import { setRoomsStatusAction } from "../store/roomsReducer";
 import { roomsToBlocks } from "./roomsCalculateService";
 
-export async function createExcelReport(rooms) {
+export async function createExcelReport(rooms, dispatch) {
   const blocks = roomsToBlocks(rooms);
   try {
     const wb = new Excel.Workbook();
@@ -62,6 +63,7 @@ export async function createExcelReport(rooms) {
     const blob = new Blob([buffer], { type: "applicationi/xlsx" });
     FileSaver.saveAs(blob, "экспликация.xlsx");
   } catch (e) {
+    dispatch(setRoomsStatusAction("error"));
     console.log(e);
   }
 }
